@@ -1,25 +1,25 @@
 ---
-import { roles } from '../data/roles.js';
+import { site } from '../content/index.js';
 ---
 
 <section class="hero">
   <div class="hero-content">
-    <div class="greeting">Hello, I’m Almira Velasquez!</div>
+    <div class="greeting">{site.greeting}!</div>
 
     <h1>
-      I turn complex, emerging tech into delightful, accessible experiences.
+      {site.headline}
     </h1>
 
     <div class="hero-location">
       <span class="role-rotator"><span class="role-track">
-        {roles.map((role, i) => (
+        {site.roles.map((role, i) => (
           <span class={i === 0 ? 'role is-current' : 'role'} aria-hidden={i === 0 ? 'false' : 'true'}>
             {role.hero}
           </span>
         ))}
       </span></span>
 
-      <span class="hero-place">@ Manila, Philippines</span>
+      <span class="hero-place">@ {site.location}</span>
     </div>
   </div>
 </section>

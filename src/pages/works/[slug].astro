@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WorkBlock from '../../components/WorkBlock.astro';
-import { works } from '../../data/works.js';
+import { site } from '../../content/index.js';
 
 export function getStaticPaths() {
-  return works.map((work) => ({ params: { slug: work.slug }, props: { work } }));
+  return site.works.map((work) => ({ params: { slug: work.slug }, props: { work } }));
 }
 
 const { work } = Astro.props;
@@ -16,10 +16,10 @@ const meta = [
   { label: 'Team', lines: page.team ?? [] },
   { label: 'Timeline', lines: page.timeline ?? [] },
 ].filter((item) => item.lines.length > 0);
-const others = works.filter((w) => w.slug !== work.slug).slice(0, 2);
+const others = site.works.filter((w) => w.slug !== work.slug).slice(0, 2);
 ---
 
-<BaseLayout title={`${work.name} — ${'Almira Velasquez'}`} description={page.summary ?? work.type}>
+<BaseLayout title={`${work.name} — ${site.name}`} description={page.summary ?? work.type}>
   <div class="cs">
     <a class="cs-back" href="/#works" aria-label="Back to all work">← Back</a>
 
@@ -71,11 +71,9 @@ const others = works.filter((w) => w.slug !== work.slug).slice(0, 2);
     )}
 
     <footer class="cs-footer">
-      <span>© {new Date().getFullYear()} {'Almira Velasquez'}</span>
+      <span>© {new Date().getFullYear()} {site.name}</span>
       <nav>
-        <a href="/#works">works</a>
-        <a href="/resume">resume</a>
-        <a href="/about">about</a>
+        {site.menu.map((item) => <a href={item.href}>{item.label}</a>)}
       </nav>
     </footer>
   </div>

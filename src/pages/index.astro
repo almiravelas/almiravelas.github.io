@@ -3,20 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Sidebar from '../components/Sidebar.astro';
 import WorkCard from '../components/WorkCard.astro';
-import { works } from '../data/works.js';
+import { site } from '../content/index.js';
 ---
 
-<BaseLayout
-  title="Almira Velasquez — Product Designer & Developer"
-  description="Almira Velasquez is a product designer and developer based in Manila, Philippines."
->
+<BaseLayout title={site.title} description={site.description}>
   <div class="scroll-track">
     <div class="stage">
       <Hero />
 
       <section class="featured" id="works">
         <div class="work-grid">
-          {works.map((work) => <WorkCard work={work} />)}
+          {site.works.map((work) => <WorkCard work={work} />)}
         </div>
       </section>
     </div>
@@ -25,6 +22,6 @@ import { works } from '../data/works.js';
 </BaseLayout>
 
 <script>
-	import '../scripts/scroll-state.js';
-	import '../scripts/role-rotator.js';
+  import '../scripts/scroll-state.js';
+  import '../scripts/role-rotator.js';
 </script>
