@@ -10,16 +10,21 @@ import { works } from '../data/works.js';
   title="Almira Velasquez — Product Designer & Developer"
   description="Almira Velasquez is a product designer and developer based in Manila, Philippines."
 >
-  <Hero />
+  <div class="scroll-track">
+    <div class="stage">
+      <Hero />
 
-  <section class="featured" id="works">
-    <div class="work-grid">
-      {works.map((work) => <WorkCard work={work} />)}
+      <section class="featured" id="works">
+        <div class="work-grid">
+          {works.map((work) => <WorkCard work={work} />)}
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
   <Sidebar />
 </BaseLayout>
 
 <script>
+	import '../scripts/scroll-state.js';
 	import '../scripts/role-rotator.js';
 </script>
