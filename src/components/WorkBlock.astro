@@ -1,0 +1,41 @@
+---
+const { block } = Astro.props;
+---
+
+<div class="cs-blk">
+  {block.eyebrow && <p class="cs-eyebrow">{block.eyebrow}</p>}
+  {block.heading && <h2 class={block.big ? 'big' : ''}>{block.heading}</h2>}
+
+  {block.image && (
+    <figure class="cs-fig">
+      {block.image.src
+        ? <img src={block.image.src} alt={block.image.alt ?? ''} />
+        : <div class="cs-ph" aria-hidden="true"></div>}
+      {block.image.caption && <figcaption>{block.image.caption}</figcaption>}
+    </figure>
+  )}
+
+  {block.stats && (
+    <div class="cs-stats">
+      {block.stats.map((s: { value: unknown; label: unknown; }) => <div><b>{s.value}</b><span>{s.label}</span></div>)}
+    </div>
+  )}
+
+  {block.cards && (
+    <div class="cs-cards3">
+      {block.cards.map((c: { label: unknown; title: unknown; text: unknown; }) => (
+        <div class="cs-card">
+          {c.label && <small>{c.label}</small>}
+          <b>{c.title}</b>
+          {c.text && <p>{c.text}</p>}
+        </div>
+      ))}
+    </div>
+  )}
+
+  {block.paragraphs && block.paragraphs.map((text: unknown) => <p>{text}</p>)}
+
+  {block.link && (
+    <a class="cs-textlink" href={block.link.href} target="_blank" rel="noopener">{block.link.label} →</a>
+  )}
+</div>

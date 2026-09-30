@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkBlock from '../../components/WorkBlock.astro';
 import { works } from '../../data/works.js';
 
 export function getStaticPaths() {
@@ -7,13 +8,99 @@ export function getStaticPaths() {
 }
 
 const { work } = Astro.props;
+const page = work.page ?? {};
+const chapters = page.chapters ?? [];
+const meta = [
+  { label: 'Role', lines: page.role ?? [] },
+  { label: 'Skills', lines: page.skills ?? [] },
+  { label: 'Team', lines: page.team ?? [] },
+  { label: 'Timeline', lines: page.timeline ?? [] },
+].filter((item) => item.lines.length > 0);
+const others = works.filter((w) => w.slug !== work.slug).slice(0, 2);
 ---
 
-<BaseLayout title={`${work.name} — Almira Velasquez`} description={work.type}>
+<BaseLayout title={`${work.name} — ${'Almira Velasquez'}`} description={page.summary ?? work.type}>
   <div class="cs">
     <a class="cs-back" href="/#works" aria-label="Back to all work">← Back</a>
 
-    <h1>{work.name}</h1>
-    <p>{work.type}</p>
+    <div class="cs-hero">
+      <div class="cs-hero-card">
+        {page.hero
+          ? <img src={page.hero.src} alt={page.hero.alt ?? ''} />
+          : <div class="cs-ph" aria-hidden="true"></div>}
+      </div>
+    </div>
+
+    <div class="cs-intro">
+      <h1>{page.headline ?? work.name}</h1>
+      {page.summary && <p>{page.summary}</p>}
+    </div>
+
+    {meta.length > 0 && (
+      <div class="cs-meta">
+        {meta.map((item) => (
+          <div>
+            <h4>{item.label}</h4>
+            <p>{item.lines.map((line) => <span>{line}</span>)}</p>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {chapters.map((chapter) => (
+      <section class="cs-chapter" id={chapter.id}>
+        <div class="cs-rail"><div class="lbl">{chapter.label}</div></div>
+        <div class="cs-body">
+          {chapter.blocks.map((block) => <WorkBlock block={block} />)}
+        </div>
+      </section>
+    ))}
+
+    {others.length > 0 && (
+      <section class="cs-more">
+        <h3>More work</h3>
+        <div class="cs-cards">
+          {others.map((other) => (
+            <a class="cs-wcard" href={`/works/${other.slug}/`}>
+              <div class="cs-thumb"></div>
+              <div class="cs-row"><b>{other.name}</b><span>{other.type}</span></div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <footer class="cs-footer">
+      <span>© {new Date().getFullYear()} {'Almira Velasquez'}</span>
+      <nav>
+        <a href="/#works">works</a>
+        <a href="/resume">resume</a>
+        <a href="/about">about</a>
+      </nav>
+    </footer>
   </div>
+
+  {chapters.length > 1 && (
+    <nav class="cs-progress" aria-label="On this page">
+      {chapters.map((chapter) => <a href={`#${chapter.id}`}>{chapter.label}</a>)}
+    </nav>
+  )}
 </BaseLayout>
+
+<script>
+  // Highlight the chapter you're reading in the left progress list
+  const links = Array.from(document.querySelectorAll('.cs-progress a'));
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + entry.target.id));
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px' }
+  );
+  links.forEach((a) => {
+    const section = document.querySelector(a.getAttribute('href'));
+    if (section) observer.observe(section);
+  });
+</script>

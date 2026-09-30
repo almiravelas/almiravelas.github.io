@@ -171,6 +171,8 @@ h1 {
 
 .cs {
   padding: 28px clamp(16px, 4vw, 48px);
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .cs-back {
@@ -190,4 +192,382 @@ h1 {
 
 .cs-back:hover {
   border-color: var(--faint);
+}
+
+/* work page layout */
+.cs-hero {
+  margin-top: 28px;
+}
+
+.cs-hero-card {
+  padding: clamp(18px, 4vw, 44px);
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.cs-hero-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.cs-ph {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--paper-line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cs-intro {
+  max-width: 640px;
+  margin: 44px 0 0 auto;
+}
+
+.cs-intro h1 {
+  max-width: none;
+  margin: 0 0 12px;
+  font-size: clamp(26px, 3.4vw, 34px);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+
+.cs-intro p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.cs-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+  padding: 18px clamp(0px, 8vw, 88px);
+  border-block: 1px solid var(--rule);
+}
+
+.cs-meta h4 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.cs-meta p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.cs-meta span {
+  display: block;
+}
+
+/* chapters labels */
+
+.cs-chapter {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 60px);
+  padding-block: 72px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cs-rail .lbl {
+  position: sticky;
+  top: 96px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cs-body {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  max-width: 680px;
+  min-width: 0;
+}
+
+.cs-blk {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.cs-blk h2 {
+  margin: -8px 0 4px;
+  font-size: clamp(19px, 2.2vw, 22px);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -.005em;
+  text-wrap: balance;
+}
+
+.cs-blk h2.big {
+  font-size: clamp(21px, 2.6vw, 26px);
+}
+
+.cs-blk p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.cs-blk .cs-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.cs-textlink {
+  font-size: 14px;
+  color: var(--text);
+  text-underline-offset: 3px;
+}
+
+.cs-fig {
+  margin: 0;
+  padding: clamp(16px, 3.5vw, 32px);
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.cs-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.cs-fig figcaption {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.cs-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--paper-line);
+}
+
+.cs-stats div {
+  padding: 14px 12px;
+  background: var(--paper);
+}
+
+.cs-stats b {
+  display: block;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cs-stats span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.cs-cards3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.cs-card {
+  padding: 16px 16px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.cs-card small {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.cs-card b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cs-card p {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+/* more work + footer */
+
+.cs-more {
+  padding-block: 56px 40px;
+}
+
+.cs-more h3 {
+  margin: 0 0 22px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.cs-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.cs-wcard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cs-thumb {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.cs-wcard:hover .cs-thumb {
+  border-color: var(--faint);
+}
+
+.cs-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.cs-row b {
+  font-weight: 500;
+}
+
+.cs-row span {
+  text-align: right;
+  color: var(--faint);
+}
+
+.cs-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 28px 40px;
+  border-top: 1px solid var(--rule);
+  font-size: 12.5px;
+  color: var(--faint);
+}
+
+.cs-footer nav {
+  display: flex;
+  gap: 18px;
+}
+
+.cs-footer nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.cs-footer nav a:hover {
+  color: var(--text);
+}
+
+/* left progress list (wide screens only) */
+.cs-progress {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 5;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11.5px;
+}
+
+.cs-progress a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--faint);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.cs-progress a::before {
+  content: "";
+  width: 12px;
+  height: 1px;
+  background: currentColor;
+  transition: width .25s;
+}
+
+.cs-progress a.on {
+  color: var(--text);
+}
+
+.cs-progress a.on::before {
+  width: 26px;
+}
+
+@media (min-width: 1260px) {
+  .cs-progress {
+    display: flex;
+  }
+}
+
+@media (max-width: 860px) {
+  .cs-chapter {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 52px;
+    gap: 18px;
+  }
+
+  .cs-rail .lbl {
+    position: static;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .cs-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-inline: 0;
+  }
+
+  .cs-intro {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
