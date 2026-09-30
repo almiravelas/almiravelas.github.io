@@ -95,6 +95,135 @@ h1 {
   }
 }
 
+/* sidebar */
+.scroll-identity {
+  position: fixed;
+  z-index: 25;
+  top: clamp(40px, 9vh, 90px);
+  left: 40px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.identity-name {
+  position: relative;
+  color: var(--muted);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -.04em;
+  text-decoration: none;
+}
+
+/* Small "home" tooltip on the name */
+.identity-name::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: #3b3b3b;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.identity-name:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.identity-role {
+  align-self: stretch;
+  margin-top: 22px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.045em;
+  color: var(--text);
+}
+
+/* Sidebar role slides side to side in step with the hero; height eases to fit */
+.side-rotator {
+  display: block;
+  overflow: hidden;
+  transition: height .7s cubic-bezier(.65,0,.2,1);
+}
+
+.side-track {
+  display: flex;
+  flex-direction: row;
+  transition: transform .7s cubic-bezier(.65,0,.2,1);
+}
+
+.side-role {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-bottom: .08em;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-rotator,
+  .side-track {
+    transition: none;
+  }
+}
+
+.identity-note {
+  margin-top: 20px;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.identity-socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.identity-socials a {
+  display: block;
+  color: var(--text);
+}
+
+.identity-socials a:hover {
+  opacity: .55;
+}
+
+.identity-socials svg {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+.identity-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.identity-menu a {
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.identity-menu a:hover {
+  color: var(--text);
+}
+
 /* featured works */
 
 .featured {
@@ -571,3 +700,4 @@ h1 {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
