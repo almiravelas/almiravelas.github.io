@@ -1,0 +1,16 @@
+---
+const { work } = Astro.props;
+---
+
+<article class="work-card">
+  <div class="card-image"></div>
+
+  <div class="card-caption">
+    <div class="card-name">{work.name}</div>
+    <div class="card-type">{work.type}</div>
+  </div>
+
+  <div class="tags">
+    {work.tags.map((tag: unknown) => <span class="tag">{tag}</span>)}
+  </div>
+</article>

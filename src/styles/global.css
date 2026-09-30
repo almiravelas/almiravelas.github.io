@@ -94,3 +94,68 @@ h1 {
     transition: none;
   }
 }
+
+/* featured works */
+
+.featured {
+  padding: 80px 7.5% 100px;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 28px;
+  row-gap: 46px;
+  align-items: start;
+}
+
+.work-card {
+  min-width: 0;
+}
+
+.card-image {
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(67,43,49,.10);
+  border-radius: 3px;
+  background: #f2e9df;
+}
+
+.work-card:nth-child(even) .card-image {
+  aspect-ratio: 16 / 9;
+}
+
+.card-caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.card-name {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+.card-type {
+  font-size: 16px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.tag {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.tag + .tag::before {
+  content: "·";
+  margin: 0 8px;
+}

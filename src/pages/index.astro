@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import WorkCard from '../components/WorkCard.astro';
+import { works } from '../data/works.js';
 ---
 
 <BaseLayout
@@ -8,6 +10,13 @@ import Hero from '../components/Hero.astro';
   description="Almira Velasquez is a product designer and developer based in Manila, Philippines."
 >
   <Hero />
+
+    <section class="featured" id="works">
+    <div class="work-grid">
+      {works.map((work) => <WorkCard work={work} />)}
+    </div>
+  </section>
+  
 </BaseLayout>
 
 <script>
