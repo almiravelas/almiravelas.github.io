@@ -1,4 +1,10 @@
 ---
+import type { Block } from '../content/types';
+
+interface Props {
+  block: Block;
+}
+
 const { block } = Astro.props;
 ---
 
@@ -23,7 +29,7 @@ const { block } = Astro.props;
 
   {block.cards && (
     <div class="cs-cards3">
-      {block.cards.map((c: { label: unknown; title: unknown; text: unknown; }) => (
+      {block.cards.map((c) => (
         <div class="cs-card">
           {c.label && <small>{c.label}</small>}
           <b>{c.title}</b>

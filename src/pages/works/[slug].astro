@@ -98,7 +98,8 @@ const others = site.works.filter((w) => w.slug !== work.slug).slice(0, 2);
     { rootMargin: '-40% 0px -55% 0px' }
   );
   links.forEach((a) => {
-    const section = document.querySelector(a.getAttribute('href'));
+    const target = a.getAttribute('href');
+    const section = target ? document.querySelector(target) : null;
     if (section) observer.observe(section);
   });
 </script>
