@@ -13,9 +13,16 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SITE_CONTENT: ${{ secrets.SITE_CONTENT }}
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v7
+      - name: Use your private site content (if provided)
+        if: env.SITE_CONTENT != ''
+        run: |
+          mkdir -p src/content
+          printf '%s' "$SITE_CONTENT" > src/content/site.js
       - name: Install, build, and upload your site
         uses: withastro/action@v6
 
