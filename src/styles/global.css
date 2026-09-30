@@ -52,11 +52,45 @@ h1 {
   color: var(--muted);
 }
 
-.hero-role {
-  display: block;
-  color: var(--text);
-}
-
 .hero-place {
   display: block;
+}
+
+/* role rotator*/
+
+.role-rotator {
+  display: block;
+  max-width: 100%;
+  height: 1.45em;
+  overflow: hidden;
+  color: var(--text);
+  transition: width .7s cubic-bezier(.65,0,.2,1);
+}
+
+.role-track {
+  display: flex;
+  flex-direction: row;
+  transition: transform .7s cubic-bezier(.65,0,.2,1);
+}
+
+.role {
+  flex: 0 0 auto;
+  height: 1.45em;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+.role.is-current,
+.side-role.is-current {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role-rotator,
+  .role-track,
+  .role,
+  .side-role {
+    transition: none;
+  }
 }

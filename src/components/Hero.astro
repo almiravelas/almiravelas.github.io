@@ -1,3 +1,7 @@
+---
+import { roles } from '../data/roles.js';
+---
+
 <section class="hero">
   <div class="hero-content">
     <div class="greeting">Hello, I’m Almira Velasquez!</div>
@@ -7,7 +11,14 @@
     </h1>
 
     <div class="hero-location">
-      <span class="hero-role">Product designer and developer</span>
+      <span class="role-rotator"><span class="role-track">
+        {roles.map((role, i) => (
+          <span class={i === 0 ? 'role is-current' : 'role'} aria-hidden={i === 0 ? 'false' : 'true'}>
+            {role.hero}
+          </span>
+        ))}
+      </span></span>
+
       <span class="hero-place">@ Manila, Philippines</span>
     </div>
   </div>
