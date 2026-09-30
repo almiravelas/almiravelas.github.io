@@ -2,7 +2,7 @@
 const { work } = Astro.props;
 ---
 
-<article class="work-card">
+<a class="work-card" href={`/works/${work.slug}/`}>
   <div class="card-image"></div>
 
   <div class="card-caption">
@@ -13,4 +13,4 @@ const { work } = Astro.props;
   <div class="tags">
     {work.tags.map((tag: unknown) => <span class="tag">{tag}</span>)}
   </div>
-</article>
+</a>
